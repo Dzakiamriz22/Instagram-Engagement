@@ -11,6 +11,7 @@ def calculate_engagement(username):
             return {"error": "The account is private."}
 
         num_followers = profile_import.followers
+        num_following = profile_import.followees
 
         total_num_likes = 0
         total_num_comments = 0
@@ -39,7 +40,9 @@ def calculate_engagement(username):
             "total_comments": total_num_comments,
             "total_posts": total_num_posts,
             "avg_likes_per_post": avg_likes_per_post_formatted,
-            "avg_comments_per_post": avg_comments_per_post_formatted
+            "avg_comments_per_post": avg_comments_per_post_formatted,
+            "followers": num_followers,
+            "following": num_following
         }
 
     except exceptions.ProfileNotExistsException:
