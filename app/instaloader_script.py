@@ -1,9 +1,15 @@
 import instaloader
 from instaloader import Instaloader, Profile, exceptions
 
+def format_number(number):
+    return "{:,}".format(number).replace(",", ".")
+
 def calculate_engagement(username):
     ig = Instaloader()
-    ig.load_session_from_file('_txt.28')
+    try:
+        ig.load_session_from_file('_txt.28')
+    except Exception:
+        return {"error": "Connection error occurred."}
 
     try:
         profile_import = Profile.from_username(ig.context, username)
@@ -36,13 +42,13 @@ def calculate_engagement(username):
         return {
             "username": username,
             "engagement": engagement_formatted,
-            "total_likes": total_num_likes,
-            "total_comments": total_num_comments,
-            "total_posts": total_num_posts,
-            "avg_likes_per_post": avg_likes_per_post_formatted,
-            "avg_comments_per_post": avg_comments_per_post_formatted,
-            "followers": num_followers,
-            "following": num_following
+            "total_likes": format_number(total_num_likes),
+            "total_comments": format_number(total_num_comments),
+            "total_posts": format_number(total_num_posts),
+            "avg_likes_per_post": format_number(avg_likes_per_post_formatted),
+            "avg_comments_per_post": format_number(avg_comments_per_post_formatted),
+            "followers": format_number(num_followers),
+            "following": format_number(num_following)
         }
 
     except exceptions.ProfileNotExistsException:
@@ -51,5 +57,11 @@ def calculate_engagement(username):
         return {"error": "The account is private."}
     except ZeroDivisionError:
         return {"error": "Cannot calculate engagement due to zero division."}
+    except exceptions.ConnectionException:
+        return {"error": "Connection error occurred."}
+    except exceptions.BadCredentialsException:
+        return {"error": "Bad credentials."}
+    except exceptions.LoginRequiredException:
+        return {"error": "Login required."}
     except Exception as e:
         return {"error": str(e)}

@@ -1,5 +1,3 @@
-# views.py
-
 from flask import Blueprint, render_template, request
 from .instaloader_script import calculate_engagement
 
@@ -17,11 +15,17 @@ def index():
         if engagement_data and "error" in engagement_data:
             error_type = engagement_data["error"]
             if error_type == "The username was not found.":
-                error_message = "Username tidak diketahui."
+                error_message = "Username tidak ditemukan."
             elif error_type == "The account is private.":
                 error_message = "Profil ini bersifat privat."
             elif error_type == "Cannot calculate engagement due to zero division.":
                 error_message = "Tidak dapat menghitung engagement karena pembagian dengan nol."
+            elif error_type == "Connection error occurred.":
+                error_message = "Terjadi kesalahan koneksi. Silakan coba lagi nanti."
+            elif error_type == "Bad credentials.":
+                error_message = "Kredensial buruk. Silakan cek kredensial Anda."
+            elif error_type == "Login required.":
+                error_message = "Login diperlukan untuk mengakses data ini."
             else:
                 error_message = "Terjadi kesalahan: " + error_type
             engagement_data = None

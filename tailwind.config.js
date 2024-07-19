@@ -1,10 +1,14 @@
 module.exports = {
   content: [
-    './templates/**/*.{html,js}', // Path to your templates
-    './app/static/**/*.{html,js}', // Path to your static files
+    './templates/**/*.{html,js}',
+    './app/static/**/*.{html,js}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
