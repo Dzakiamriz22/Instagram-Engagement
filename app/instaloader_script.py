@@ -2,6 +2,8 @@ import instaloader
 from instaloader import Instaloader, Profile, exceptions
 
 def format_number(number):
+    if isinstance(number, float):
+        return "{:,.2f}".format(number).replace(",", "X").replace(".", ",").replace("X", ".")
     return "{:,}".format(number).replace(",", ".")
 
 def calculate_engagement(username):
@@ -35,9 +37,9 @@ def calculate_engagement(username):
         avg_likes_per_post = total_num_likes / total_num_posts
         avg_comments_per_post = total_num_comments / total_num_posts
 
-        engagement_formatted = round(engagement * 100, 2)
-        avg_likes_per_post_formatted = round(avg_likes_per_post, 2)
-        avg_comments_per_post_formatted = round(avg_comments_per_post, 2)
+        engagement_formatted = format_number(round(engagement * 100, 2))
+        avg_likes_per_post_formatted = format_number(round(avg_likes_per_post, 2))
+        avg_comments_per_post_formatted = format_number(round(avg_comments_per_post, 2))
 
         return {
             "username": username,
@@ -45,8 +47,8 @@ def calculate_engagement(username):
             "total_likes": format_number(total_num_likes),
             "total_comments": format_number(total_num_comments),
             "total_posts": format_number(total_num_posts),
-            "avg_likes_per_post": format_number(avg_likes_per_post_formatted),
-            "avg_comments_per_post": format_number(avg_comments_per_post_formatted),
+            "avg_likes_per_post": avg_likes_per_post_formatted,
+            "avg_comments_per_post": avg_comments_per_post_formatted,
             "followers": format_number(num_followers),
             "following": format_number(num_following)
         }

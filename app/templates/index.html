@@ -10,7 +10,7 @@
 <body class="bg-[#F8F9FA] min-h-screen flex flex-col items-center justify-center font-montserrat">
   <div class="w-full max-w-4xl px-4">
     <h1 class="text-3xl font-bold mb-4 text-[#4C347F]">Instagram Engagement Calculator</h1>
-    <p class="text-sm mb-6 text-[#4C347F]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Duis luctus, orci sodales vulputate elementum.</p>
+    <p class="text-sm mb-6 text-[#4C347F]">Calculate your Instagram engagement rate easily</p>
     
     <div class="flex justify-center mb-1">
       <form action="{{ url_for('main.index') }}" method="POST" class="flex w-full max-w-md space-x-2" onsubmit="return validateForm()">
@@ -22,8 +22,8 @@
     <p class="text-sm font-light mb-8 mt-1 text-[#4C347F]">example: @campusdigital.id</p>
     
     {% if error_message %}
-    <div class="text-center bg-red-100 border border-red-300 text-red-800 px-4 py-2 rounded-md shadow-md mb-8 mt-8">
-      <p class="text-sm font-medium">{{ error_message }}</p>
+    <div class="text-center bg-red-100 border border-red-300  px-4 py-2 rounded-md shadow-md mb-8 mt-8">
+      <p class="text-sm font-medium text-red-800">{{ error_message }}</p>
     </div>
     {% endif %}
     
