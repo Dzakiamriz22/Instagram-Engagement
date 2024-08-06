@@ -9,7 +9,7 @@ def format_number(number):
 def calculate_engagement(username):
     ig = Instaloader()
     try:
-        ig.load_session_from_file('_txt.28', 'C:/Users/ACER/OneDrive/Desktop/Frontend IG/session-_txt.28') #Ganti direktori sesuai tempat session
+        ig.load_session_from_file('_txt.28')
     except Exception:
         return {"error": "Connection error occurred."}
 

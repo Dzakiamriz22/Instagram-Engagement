@@ -14,20 +14,14 @@ def index():
 
         if engagement_data and "error" in engagement_data:
             error_type = engagement_data["error"]
-            if error_type == "The username was not found.":
-                error_message = "Username tidak ditemukan."
-            elif error_type == "The account is private.":
-                error_message = "Profil ini bersifat privat."
-            elif error_type == "Cannot calculate engagement due to zero division.":
-                error_message = "Tidak dapat menghitung engagement karena pembagian dengan nol."
-            elif error_type == "Connection error occurred.":
-                error_message = "Terjadi kesalahan koneksi. Silakan coba lagi nanti."
-            elif error_type == "Bad credentials.":
-                error_message = "Kredensial buruk. Silakan cek kredensial Anda."
-            elif error_type == "Login required.":
-                error_message = "Login diperlukan untuk mengakses data ini."
-            else:
-                error_message = "Terjadi kesalahan: " + error_type
+            error_message = {
+                "The username was not found.": "Username tidak ditemukan.",
+                "The account is private.": "Profil ini bersifat privat.",
+                "Cannot calculate engagement due to zero division.": "Tidak dapat menghitung engagement karena pembagian dengan nol.",
+                "Connection error occurred.": "Terjadi kesalahan koneksi. Silakan coba lagi nanti.",
+                "Bad credentials.": "Kredensial buruk. Silakan cek kredensial Anda.",
+                "Login required.": "Login diperlukan untuk mengakses data ini."
+            }.get(error_type, "Terjadi kesalahan: " + error_type)
             engagement_data = None
 
     return render_template('index.html', engagement_data=engagement_data, error_message=error_message)
