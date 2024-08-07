@@ -3,7 +3,11 @@ from .instaloader_script import calculate_engagement
 
 main = Blueprint('main', __name__)
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/', methods=['GET'])
+def landing():
+    return render_template('landing.html')
+
+@main.route('/index', methods=['GET', 'POST'])
 def index():
     engagement_data = None
     error_message = None

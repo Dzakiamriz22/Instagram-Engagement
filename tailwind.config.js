@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
+        'segoe': ['Segoe UI', 'sans-serif'],
       },
     },
   },

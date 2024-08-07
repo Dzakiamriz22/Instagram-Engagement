@@ -8,7 +8,7 @@
   <title>Instagram Engagement Calculator</title>
 </head>
 
-<body class="bg-[#F8F9FA] min-h-screen flex flex-col">
+<body class="bg-[#F8F9FA] flex flex-col min-h-screen font-segoe">
 
   <nav class="bg-white shadow-md w-full fixed top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -18,24 +18,77 @@
       </div>
       <!-- Navigation Links -->
       <div class="flex items-center space-x-8">
-        <a href="#contact" class="text-gray-800 hover:underline font-medium">Contact</a>
-        <a href="#get-started" class="px-4 py-2 bg-purple-300 text-purple-800 rounded-lg hover:bg-purple-500 hover:text-white transition duration-300 ease-in-out">Get Started</a>
+        <a href="{{ url_for('main.login') }}" class="bg-[#E1C7FD] text-[#340369] rounded-[10px] px-5 py-3 shadow-sm font-bold transition-colors duration-300 hover:bg-[#340369] hover:text-white">Get Started</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <div class="flex-grow flex items-center justify-center text-center px-6">
+  <div class="flex-grow flex items-center justify-center text-center px-6 mt-16 h-screen bg-[url('https://campusdigital.id/assets/images/background/pattern.svg')] bg-contain bg-center">
     <div>
-      <h1 class="text-4xl font-bold text-black mb-4">Selamat Datang di Instagram Engagement Rate Calculator!</h1>
-      <p class="text-xl text-gray-700 mb-8">Tingkatkan Strategi Sosial Media Anda dengan Mudah</p>
-      <a href="#get-started" class="inline-block px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-300">Get Started</a>
-      <a href="#how-it-works" class="inline-block px-6 py-3 ml-4 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition-colors duration-300">How it works</a>
+      <h1 class="text-5xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">Instagram <span class="text-yellow-500">Engagement Rate</span> <br>Calculator!</h1>
+      <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-black mb-8">Tingkatkan Strategi Sosial Media Anda dengan Mudah</p>
+      <a href="{{ url_for('main.login') }}" class="bg-[#E1C7FD] text-[#340369] rounded-[10px] px-5 py-3 shadow-sm font-bold transition-colors duration-300 hover:bg-[#340369] hover:text-white">Get Started</a>
+      <a href="#how-it-works" class="border border-[#340369] text-[#340369] rounded-[10px] px-5 py-3 font-bold transition-colors duration-300 hover:bg-[#340369] hover:text-white">How it works</a>
     </div>
   </div>
 
-  <!-- Placeholder for Footer or Additional Content -->
+  <!-- Features Section -->
+  <section id="features" class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-black mb-6">Keunggulan Kami</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 border rounded-lg shadow-md bg-gray-50 transform transition-transform duration-300 hover:scale-105">
+          <h3 class="text-xl font-semibold mb-2">Analisis Mendalam</h3>
+          <p class="text-gray-700">Dapatkan wawasan mendalam tentang performa akun Instagram Anda dengan metrik yang akurat.</p>
+        </div>
+        <div class="p-6 border rounded-lg shadow-md bg-gray-50 transform transition-transform duration-300 hover:scale-105">
+          <h3 class="text-xl font-semibold mb-2">Mudah Digunakan</h3>
+          <p class="text-gray-700">Interface yang user-friendly memudahkan Anda untuk memulai analisis hanya dalam hitungan detik.</p>
+        </div>
+        <div class="p-6 border rounded-lg shadow-md bg-gray-50 transform transition-transform duration-300 hover:scale-105">
+          <h3 class="text-xl font-semibold mb-2">Kecepatan & Efisiensi</h3>
+          <p class="text-gray-700">Dapatkan hasil analisis dengan cepat tanpa mengorbankan akurasi dan ketelitian data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <section id="how-it-works" class="py-12 bg-[#F8F9FA]">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-black mb-8">Cara Kerja</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Card 1 -->
+        <div class="p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Langkah 1: Masukkan Username</h3>
+          <p class="text-gray-700">Ketikkan nama pengguna Instagram yang ingin Anda analisis untuk memulai perhitungan.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Langkah 2: Hitung Engagement</h3>
+          <p class="text-gray-700">Kalkulator kami akan mengambil data dan menghitung tingkat engagement dengan cepat dan akurat.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Langkah 3: Tinjau Hasil</h3>
+          <p class="text-gray-700">Analisis hasil yang ditampilkan untuk memahami performa akun dan meningkatkan strategi sosial media Anda.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="p-6 bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h3 class="text-xl font-semibold mb-2 text-gray-800">Langkah 4: Optimalkan Konten</h3>
+          <p class="text-gray-700">Gunakan wawasan ini untuk merencanakan dan mengoptimalkan konten yang lebih efektif.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer Section -->
+  <footer class="bg-white py-4">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="text-gray-600">© 2024 Instagram Engagement Calculator. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../static/js/"></script>
 </body>
 </html>
