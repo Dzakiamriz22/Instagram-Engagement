@@ -1,0 +1,4 @@
+Flask==2.3.2
+Flask-OAuthlib==0.9.6
+instaloader==4.8.5
+requests==2.31.0
