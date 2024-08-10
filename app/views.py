@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from .instaloader_script import calculate_engagement
 
 main = Blueprint('main', __name__)
@@ -29,3 +29,15 @@ def index():
             engagement_data = None
 
     return render_template('index.html', engagement_data=engagement_data, error_message=error_message)
+
+@main.route('/register', methods=['GET'])
+def register():
+    return render_template('register.html')
+
+@main.route('/login', methods=['GET'])
+def login():
+    return render_template('login.html')
+
+@main.route('/get-started', methods=['GET'])
+def get_started():
+    return redirect(url_for('main.login'))

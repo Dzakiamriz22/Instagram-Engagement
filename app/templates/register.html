@@ -7,51 +7,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
   <title>Register - Instagram Engagement Calculator</title>
 </head>
-<body class="bg-[#F8F9FA] flex flex-col min-h-screen font-segoe">
+<body class="bg-[#F8F9FA] flex flex-col min-h-screen font-montserrat">
 
-  <nav class="bg-white shadow-md w-full fixed top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+  <nav class="bg-white shadow-sm w-full sticky top-0 z-10">
+    <div class="py-4 mx-auto container px-8 xl:px-20 flex justify-between items-center">
       <div>
-        <img src="../static/img/logo_cdi.png" alt="Logo CDI" class="h-10 w-auto">
+        <img src="../static/img/logo_cdi.png" alt="Logo CDI" class="h-[60px] w-auto">
       </div>
-      <div class="flex items-center space-x-8">
-        <a href="{{ url_for('main.index') }}" class="bg-[#E1C7FD] text-[#340369] rounded-[10px] px-5 py-3 shadow-sm font-bold transition-colors duration-300 hover:bg-[#340369] hover:text-white">Get Started</a>
+      <div class="flex items-center gap-8">
+        <a href="{{ url_for('main.login') }}" class="font-textsemibold text-primary hover:underline">Masuk</a>
+        <a href="{{ url_for('main.register') }}" class="button-primary">Daftar</a>
       </div>
     </div>
   </nav>
 
-  <main class="flex-grow flex items-center justify-center px-6 mt-16 h-screen bg-[url('https://campusdigital.id/assets/images/background/pattern.svg')] bg-contain bg-center">
-    <div class="max-w-md w-full bg-white border border-[#E1C7FD] rounded-lg shadow-lg p-8">
-      <h1 class="text-3xl font-bold text-[#340369] mb-6">Register</h1>
+  <div class="flex-grow flex flex-col gap-2 justify-center items-center text-center mt-16 mb-16 px-4"> <!-- Adjusted margin and padding -->
+    <div class="max-w-md w-full bg-white border border-[#E1C7FD] rounded-lg shadow-lg p-8"> 
+      <h1 class="text-3xl font-bold text-primary mb-6">Register</h1>
       <form action="{{ url_for('main.register') }}" method="post" class="space-y-4">
         <div class="relative">
-          <label for="username" class="block text-left text-gray-700">Username</label>
-          <input type="text" id="username" name="username" required class="w-full p-4 border border-[#E1C7FD] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1C7FD]">
+          <label for="username" class="block text-left text-gray-700 font-medium">Username</label>
+          <input type="text" id="username" name="username" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="email" class="block text-left text-gray-700">Email</label>
-          <input type="email" id="email" name="email" required class="w-full p-4 border border-[#E1C7FD] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1C7FD]">
+          <label for="email" class="block text-left text-gray-700 font-medium">Email</label>
+          <input type="email" id="email" name="email" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="password" class="block text-left text-gray-700">Password</label>
-          <input type="password" id="password" name="password" required class="w-full p-4 border border-[#E1C7FD] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1C7FD]">
+          <label for="password" class="block text-left text-gray-700 font-medium">Password</label>
+          <input type="password" id="password" name="password" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="confirm_password" class="block text-left text-gray-700">Confirm Password</label>
-          <input type="password" id="confirm_password" name="confirm_password" required class="w-full p-4 border border-[#E1C7FD] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E1C7FD]">
+          <label for="confirm_password" class="block text-left text-gray-700 font-medium">Confirm Password</label>
+          <input type="password" id="confirm_password" name="confirm_password" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         {% if error_message %}
           <div class="text-red-500 mb-4">{{ error_message }}</div>
         {% endif %}
-        <button type="submit" class="bg-[#E1C7FD] text-[#340369] rounded-[10px] px-5 py-3 shadow-sm font-bold transition-colors duration-300 hover:bg-[#340369] hover:text-white">Register</button>
+        <button type="submit" class="bg-primary-variant text-primary rounded-lg px-5 py-3 shadow-sm font-bold transition-colors duration-300 hover:bg-primary hover:text-white">Register</button>
       </form>
-      <p class="mt-4 text-gray-600">Already have an account? <a href="{{ url_for('main.login') }}" class="text-[#E1C7FD] hover:underline">Login here</a>.</p>
+      <p class="mt-4 text-gray-600">Already have an account? <a href="{{ url_for('main.login') }}" class="text-primary hover:underline">Login here</a>.</p>
     </div>
-  </main>
+  </div>
 
-  <footer class="bg-white py-4">
+  <footer class="bg-white py-4 border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <p class="text-gray-600">© 2024 Instagram Engagement Calculator. All rights reserved.</p>
+      <p class="text-gray-600 text-sm">© 2024 Instagram Engagement Calculator. All rights reserved.</p>
     </div>
   </footer>
 

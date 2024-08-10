@@ -20,6 +20,7 @@ def calculate_engagement(username):
 
         num_followers = profile_import.followers
         num_following = profile_import.followees
+        full_name = profile_import.full_name  # Fetch the full name
 
         total_num_likes = 0
         total_num_comments = 0
@@ -43,6 +44,7 @@ def calculate_engagement(username):
 
         return {
             "username": username,
+            "full_name": full_name,  # Include full name in the response
             "engagement": engagement_formatted,
             "total_likes": format_number(total_num_likes),
             "total_comments": format_number(total_num_comments),
