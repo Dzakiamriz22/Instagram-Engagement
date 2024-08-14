@@ -10,35 +10,53 @@
 <body class="bg-[#F8F9FA] flex flex-col min-h-screen font-montserrat">
 
   <nav class="bg-white shadow-sm w-full sticky top-0 z-10">
-    <div class="py-4 mx-auto container px-8 xl:px-20 flex justify-between items-center">
+    <div class="py-4 mx-auto container px-4 sm:px-8 xl:px-20 flex justify-between items-center">
       <div>
-        <img src="../static/img/logo_cdi.png" alt="Logo CDI" class="h-[60px] w-auto">
+        <img src="{{ url_for('static', filename='img/logo_cdi.png') }}" alt="Logo CDI" class="h-[60px] w-auto">
       </div>
-      <div class="flex items-center gap-8">
+      <div class="flex items-center gap-4 sm:gap-8">
         <a href="{{ url_for('main.login') }}" class="font-textsemibold text-primary hover:underline">Masuk</a>
         <a href="{{ url_for('main.register') }}" class="button-primary">Daftar</a>
       </div>
     </div>
   </nav>
 
-  <div class="flex-grow flex flex-col gap-2 justify-center items-center text-center mt-16 mb-16 px-4"> <!-- Adjusted margin and padding -->
-    <div class="max-w-md w-full bg-white border border-[#E1C7FD] rounded-lg shadow-lg p-8"> 
+  <div class="flex-grow flex flex-col gap-2 justify-center items-center text-center mt-16 mb-16 px-4">
+    <div class="max-w-md w-full bg-white border border-[#E1C7FD] rounded-lg shadow-lg p-8">
       <h1 class="text-3xl font-bold text-primary mb-6">Register</h1>
+      
+      <!-- Flash message block -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="list-none p-0 mb-4">
+            {% for category, message in messages %}
+              <li class="p-2 mb-2 text-sm rounded-lg {{ 'bg-red-100 text-red-700' if category == 'danger' else 'bg-green-100 text-green-700' }}">
+                {{ message }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
       <form action="{{ url_for('main.register') }}" method="post" class="space-y-4">
         <div class="relative">
-          <label for="username" class="block text-left text-gray-700 font-medium">Username</label>
+          <label for="full_name" class="block text-left text-primary font-medium">Full Name</label>
+          <input type="text" id="full_name" name="full_name" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
+        </div>
+        <div class="relative">
+          <label for="username" class="block text-left text-primary font-medium">Username</label>
           <input type="text" id="username" name="username" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="email" class="block text-left text-gray-700 font-medium">Email</label>
+          <label for="email" class="block text-left text-primary font-medium">Email</label>
           <input type="email" id="email" name="email" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="password" class="block text-left text-gray-700 font-medium">Password</label>
+          <label for="password" class="block text-left text-primary font-medium">Password</label>
           <input type="password" id="password" name="password" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         <div class="relative">
-          <label for="confirm_password" class="block text-left text-gray-700 font-medium">Confirm Password</label>
+          <label for="confirm_password" class="block text-left text-primary font-medium">Confirm Password</label>
           <input type="password" id="confirm_password" name="confirm_password" required class="w-full p-4 border border-primary-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-variant">
         </div>
         {% if error_message %}
@@ -56,6 +74,6 @@
     </div>
   </footer>
 
-  <script src="../static/js/"></script>
+  <script src="../static/js/main.js"></script>
 </body>
 </html>
