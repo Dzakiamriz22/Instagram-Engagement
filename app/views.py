@@ -32,23 +32,36 @@ def register():
         new_user = User(username=username, password=hashed_password, full_name=full_name, email=email)
         db.session.add(new_user)
         db.session.commit()
-        flash('Registration successful! Please log in.', 'success')
-        return redirect(url_for('main.login'))
+
+        # Automatically log in the user after successful registration
+        session['username'] = username
+        flash(f'Berhasil masuk, selamat datang, {full_name}', 'success')
+        return redirect(url_for('main.index'))
 
     return render_template('register.html')
 
 @main.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username'].lower()
+        user_input = request.form['username'].lower()
         password = request.form['password']
 
-        user = User.query.filter(func.lower(User.username) == username).first()
+        # Search for the user by username or email
+        user = User.query.filter(
+            func.lower(User.username) == user_input
+        ).first()
+
+        if not user:
+            user = User.query.filter(
+                func.lower(User.email) == user_input
+            ).first()
+
         if user and check_password_hash(user.password, password):
-            session['username'] = username
+            session['username'] = user.username  # Use username for session
+            flash(f'Berhasil masuk, selamat datang, {user.full_name}', 'success')
             return redirect(url_for('main.index'))
         else:
-            flash('Invalid username or password', 'danger')
+            flash('Invalid username/email or password', 'danger')
 
     return render_template('login.html')
 
@@ -95,4 +108,4 @@ def add_header(response):
     response.cache_control.no_store = True
     response.cache_control.no_cache = True
     response.cache_control.must_revalidate = True
-    return response
+    return response 

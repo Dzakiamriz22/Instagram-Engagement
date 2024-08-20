@@ -752,10 +752,6 @@ video {
   }
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -772,6 +768,10 @@ video {
   position: sticky;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .left-0 {
   left: 0px;
 }
@@ -780,16 +780,16 @@ video {
   right: 0px;
 }
 
+.right-4 {
+  right: 1rem;
+}
+
 .top-0 {
   top: 0px;
 }
 
-.right-10 {
-  right: 2.5rem;
-}
-
-.top-10 {
-  top: 2.5rem;
+.top-4 {
+  top: 1rem;
 }
 
 .z-10 {
@@ -849,6 +849,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -861,6 +865,10 @@ video {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -871,6 +879,11 @@ video {
 
 .hidden {
   display: none;
+}
+
+.size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .h-1 {
@@ -928,10 +941,6 @@ video {
 
 .max-w-4xl {
   max-width: 56rem;
-}
-
-.max-w-7xl {
-  max-width: 80rem;
 }
 
 .max-w-md {
@@ -1000,6 +1009,12 @@ video {
   margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(2rem * var(--tw-space-x-reverse));
+  margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1020,6 +1035,10 @@ video {
   text-wrap: pretty;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -1036,18 +1055,9 @@ video {
   border-width: 2px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-\[\#E1C7FD\] {
   --tw-border-opacity: 1;
   border-color: rgb(225 199 253 / var(--tw-border-opacity));
-}
-
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .border-gray-300 {
@@ -1075,9 +1085,19 @@ video {
   background-color: rgb(220 252 231 / var(--tw-bg-opacity));
 }
 
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(52 16 91 / var(--tw-bg-opacity));
+}
+
 .bg-primary-variant {
   --tw-bg-opacity: 1;
   background-color: rgb(225 199 253 / var(--tw-bg-opacity));
+}
+
+.bg-primary-variant2 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(70 21 122 / var(--tw-bg-opacity));
 }
 
 .bg-red-100 {
@@ -1098,11 +1118,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-green-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\'https\:\/\/campusdigital\.id\/assets\/images\/background\/pattern\.svg\'\)\] {
@@ -1186,8 +1201,8 @@ video {
   padding-inline-start: 2rem;
 }
 
-.pt-20 {
-  padding-top: 5rem;
+.pt-40 {
+  padding-top: 10rem;
 }
 
 .text-left {
@@ -1229,6 +1244,11 @@ video {
   letter-spacing: 0.025em;
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -1267,11 +1287,6 @@ video {
 .text-secondary {
   --tw-text-opacity: 1;
   color: rgb(253 209 0 / var(--tw-text-opacity));
-}
-
-.text-yellow-500 {
-  --tw-text-opacity: 1;
-  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -1357,17 +1372,6 @@ video {
 .focus\:ring-primary-variant:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(225 199 253 / var(--tw-ring-opacity));
-}
-
-@media (min-width: 640px) {
-  .sm\:gap-8 {
-    gap: 2rem;
-  }
-
-  .sm\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 
 @media (min-width: 768px) {

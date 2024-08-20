@@ -26,7 +26,8 @@ def calculate_engagement(username):
         total_num_comments = 0
         total_num_posts = 0
 
-        for post in profile_import.get_posts():
+        posts = profile_import.get_posts()
+        for post in posts:
             total_num_likes += post.likes
             total_num_comments += post.comments
             total_num_posts += 1
